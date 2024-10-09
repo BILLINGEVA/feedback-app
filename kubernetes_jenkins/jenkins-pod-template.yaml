@@ -23,7 +23,19 @@ spec:
     - name: docker-socket
       mountPath: /var/run/docker.sock
   - name: kubectl
-    image: lachlanevenson/k8s-kubectl:latest
+    image: galaataman/kubectl:latest
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "250m"
+    command:
+    - cat
+    tty: true
+  - name: k6
+    image: galaataman/k6:latest
     resources:
       requests:
         memory: "128Mi"
